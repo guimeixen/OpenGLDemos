@@ -7,7 +7,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalDependencies>Base.lib;debug/x86/assimp.lib;debug/x86/glew32d.lib;debug/x86/glfw3.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Base.lib;debug_lib/lib_x86/assimp.lib;debug_lib/lib_x86/glew32d.lib;debug_lib/lib_x86/glfw3.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)Base;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

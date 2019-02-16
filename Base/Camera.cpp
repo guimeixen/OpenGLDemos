@@ -43,7 +43,7 @@ void Camera::Move(Camera_Movement direction, float deltaTime)
 	frustum.SetCamDef(position, position + front, up);
 }
 
-void Camera::SetPos(glm::vec3 pos)
+void Camera::SetPos(const glm::vec3 &pos)
 {
 	position = pos;
 	UpdateCamVectors();
@@ -110,8 +110,7 @@ void Camera::Look()
 	UpdateCamVectors();
 }
 
-// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
-glm::mat4 Camera::GetViewMatrix()
+ glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(position, position + front, up);
 }
@@ -126,7 +125,7 @@ void Camera::SetProjectionMatrix(float fov, float aspectRatio, float nearPlane, 
 	frustum.SetCamInternals(fov, aspectRatio, nearPlane, farPlane);
 }
 
-glm::mat4 Camera::GetProjectionMatrix()
+const glm::mat4 &Camera::GetProjectionMatrix()
 {
 	return projectionMatrix;
 }

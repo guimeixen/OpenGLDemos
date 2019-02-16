@@ -27,13 +27,10 @@ public:
 	void Look();
 	glm::mat4 GetViewMatrix();
 	void SetProjectionMatrix(float fov, float aspectRatio, float nearPlane, float farPlane);
-	glm::mat4 GetProjectionMatrix();
+	const glm::mat4 &GetProjectionMatrix();
 	void Move(Camera_Movement direction, float deltaTime);
 
-	void SetPos(glm::vec3 pos);
-	glm::vec3 GetPos() { return position; }
-	float GetMoveSpeed() const { return moveSpeed; }
-
+	void SetPos(const glm::vec3 &pos);
 	void SetFOV(float fov);
 	void SetNearPlane(float near);
 	void SetFarPlane(float far);
@@ -43,6 +40,8 @@ public:
 
 	const glm::vec3 &GetForward() const { return front; }
 	const glm::vec3 &GetRight() const { return right; }
+	const glm::vec3 &GetPos() { return position; }
+	float GetMoveSpeed() const { return moveSpeed; }
 	float GetPitch() const { return pitch; }
 	float GetYaw() const { return yaw; }
 	float GetFOV()const { return fov; }

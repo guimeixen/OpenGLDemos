@@ -20,22 +20,22 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CA2F70FC-902B-4D74-9808-C1A614CEE24C}</ProjectGuid>
-    <RootNamespace>Base</RootNamespace>
+    <ProjectGuid>{8E3368E7-3AC7-4046-952E-929CC0CE1092}</ProjectGuid>
+    <RootNamespace>FXAA</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -45,10 +45,10 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -58,9 +58,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheet.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PointLightShadows\PropertySheetRelease86.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -69,29 +71,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>$(SolutionDir)lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>debug86\assimp.lib;debug86\glfw3.lib;debug86\glew32d.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -107,13 +96,10 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>release86\assimp.lib;release86\glew32.lib;release86\glfw3.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -124,8 +110,6 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -133,56 +117,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="Frustum.cpp" />
-    <ClCompile Include="imgui\imconfig.cpp" />
-    <ClCompile Include="imgui\imgui.cpp" />
-    <ClCompile Include="imgui\imgui_draw.cpp" />
-    <ClCompile Include="imgui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Plane.cpp" />
-    <ClCompile Include="Profiler.cpp" />
-    <ClCompile Include="Quad.cpp" />
-    <ClCompile Include="Random.cpp" />
-    <ClCompile Include="ResourcesLoader.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="TextRenderer.cpp" />
-    <ClCompile Include="TimeOfDayManager.cpp" />
-    <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="Frustum.h" />
-    <ClInclude Include="imgui\imconfig.h" />
-    <ClInclude Include="imgui\imgui.h" />
-    <ClInclude Include="imgui\imgui_impl_glfw.h" />
-    <ClInclude Include="imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="imgui\imgui_internal.h" />
-    <ClInclude Include="imgui\stb_rect_pack.h" />
-    <ClInclude Include="imgui\stb_textedit.h" />
-    <ClInclude Include="imgui\stb_truetype.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Plane.h" />
-    <ClInclude Include="Profiler.h" />
-    <ClInclude Include="Quad.h" />
-    <ClInclude Include="Random.h" />
-    <ClInclude Include="ResourcesLoader.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="StringID.h" />
-    <ClInclude Include="TextRenderer.h" />
-    <ClInclude Include="TimeOfDayManager.h" />
-    <ClInclude Include="Utils.h" />
-    <ClInclude Include="Window.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
