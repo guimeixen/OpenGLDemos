@@ -1,6 +1,7 @@
 #pragma once
 
-#include "glew\glew.h"
+#include "glew/glew.h"
+#include "glm/glm.hpp"
 
 #include <string>
 
@@ -14,4 +15,5 @@ namespace utils
 	GLuint LoadCubemap(const char *faces[6]);
 	GLenum GetFormat(GLenum internalFormat);
 	GLenum GetInternalFormat(int channels, GLenum type);
+	glm::vec3 HSVtoRGB(const glm::vec3 &hsv);
 }

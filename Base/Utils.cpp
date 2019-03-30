@@ -343,4 +343,57 @@ namespace utils
 		}
 		return format;
 	}
+
+	glm::vec3 HSVtoRGB(const glm::vec3 &hsv)
+	{
+		float min;
+		float chroma;
+		float hDash;
+		float x;
+		glm::vec3 rgb = glm::vec3(0.0f);
+
+		chroma = hsv.y * hsv.z;
+		hDash = hsv.x / 60.0f;
+		x = chroma * (1.0f - std::abs(std::fmod(hDash, 2.0f) - 1.0f));
+
+		if (hDash < 1.0f)
+		{
+			rgb.x = chroma;
+			rgb.y = x;
+		}
+		else if (hDash < 2.0f)
+		{
+			rgb.x = x;
+			rgb.y = chroma;
+		}
+		else if (hDash < 3.0)
+		{
+			rgb.y = chroma;
+			rgb.z = x;
+		}
+		else if (hDash < 4.0f)
+		{
+			rgb.y = x;
+			rgb.z = chroma;
+		}
+		else if (hDash < 5.0f)
+		{
+			rgb.x = x;
+			rgb.z = chroma;
+		}
+		else if (hDash <= 6.0f)
+		{
+			rgb.x = chroma;
+			rgb.z = x;
+		}
+
+		min = hsv.z - chroma;
+
+		rgb.x += min;
+		rgb.y += min;
+		rgb.z += min;
+		//rgb.w = hsv.w;
+
+		return rgb;
+	}
 }

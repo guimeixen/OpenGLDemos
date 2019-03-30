@@ -91,7 +91,7 @@ bool Window::Init(unsigned int width, unsigned int height)
 	style.FrameBorderSize = 1.0f;
 	style.WindowRounding = 0.0f;
 
-	ImGui_ImplGlfw_InitForOpenGL(window, false);
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init();
 
 	profiler.Init();

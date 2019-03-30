@@ -12,5 +12,5 @@ void main()
 {
 	color = inColor;
 	uv = vec2(posuv.z, posuv.w);
-	gl_Position = projectionMatrix * vec4(posuv.xy, 0.0, 1.0);
+	gl_Position = projectionMatrix * vec4(posuv.xy, 0.1, 1.0);
 }
