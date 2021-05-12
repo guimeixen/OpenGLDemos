@@ -8,14 +8,6 @@
 #include <fstream>
 #include <sstream>
 
-Model::Model()
-{
-}
-
-Model::~Model()
-{
-}
-
 void Model::Load(std::string path)
 {
 	this->path = path;
@@ -60,7 +52,7 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
-		Vertex vertex;
+		Vertex vertex = {};
 		glm::vec3 vector;
 
 		vector.x = mesh->mVertices[i].x;
@@ -139,6 +131,7 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 
 		LoadMaterialTextures(textures, mat, aiTextureType_DIFFUSE, true);
 		LoadMaterialTextures(textures, mat, aiTextureType_SPECULAR, false);
+		LoadMaterialTextures(textures, mat, aiTextureType_HEIGHT, false);
 	}
 
 	GLuint vao, vbo, ibo;

@@ -12,9 +12,6 @@
 class Model
 {
 public:
-	Model();
-	~Model();
-
 	void Load(std::string path);
 	void Dispose();
 	void Render();
