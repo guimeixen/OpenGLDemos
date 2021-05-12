@@ -1,9 +1,10 @@
 #pragma once
 
-#include "glew\glew.h"
-#include "glm\glm.hpp"
+#include "glew/glew.h"
+#include "glm/glm.hpp"
 
 #include <map>
+#include <string>
 
 class Shader
 {
