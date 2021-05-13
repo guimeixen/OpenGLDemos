@@ -7,8 +7,9 @@ layout(location = 1) in vec3 normal;
 layout(location = 2) in vec3 worldPos;
 layout(location = 3) in mat3 TBN;
 
-layout(binding = 0) uniform sampler2D diffuse;
-layout(binding = 1) uniform sampler2D normalMap;
+layout(binding = 0) uniform sampler2D diffuseTexture;
+layout(binding = 1) uniform sampler2D specularMap;
+layout(binding = 2) uniform sampler2D normalMap;
 
 uniform vec3 lightPos;
 
@@ -27,9 +28,10 @@ void main()
 	att *= att;
 	diff *= att;
 
-	vec3 diffuse = texture(diffuse, uv).rgb;
+	vec3 diffuse = texture(diffuseTexture, uv).rgb;
 	diffuse *= diff;
 
 	color.rgb = pow(diffuse, vec3(0.45));
+	color.rgb = texture(normalMap, uv).rgb;
 	color.a = 1.0;
 }

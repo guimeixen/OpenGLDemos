@@ -46,7 +46,7 @@ int main()
 
 
 	Model trashCan;
-	trashCan.Load("Data/Models/trash_can.obj");
+	trashCan.Load("Data/Models/crytek-sponza/sponza1.obj");
 
 	Cube cube;
 	cube.Load();
@@ -97,7 +97,8 @@ int main()
 
 		modelShader.Use();
 		modelShader.SetMat4("projView", camera.GetProjectionMatrix() * camera.GetViewMatrix());
-		modelShader.SetMat4("modelMatrix", glm::rotate(glm::mat4(1.0f), glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+//		modelShader.SetMat4("modelMatrix", glm::rotate(glm::mat4(1.0f), glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+		modelShader.SetMat4("modelMatrix", glm::mat4(1.0f));
 		modelShader.SetVec3("lightPos", lightPos);
 		trashCan.Render();
 

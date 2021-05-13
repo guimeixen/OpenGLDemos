@@ -13,6 +13,10 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Base;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;GLM_FORCE_RADIANS;GLM_FORCE_DEPTH_ZERO_TO_ONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>copy /Y "$(SolutionDir)lib\$(Configuration)\$(PlatformTargetAsMSBuildArchitecture)\assimp.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)lib\$(Configuration)\$(PlatformTargetAsMSBuildArchitecture)\glew32d.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>
