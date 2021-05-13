@@ -46,12 +46,12 @@ int main()
 
 
 	Model trashCan;
-	trashCan.Load("Data/Models/crytek-sponza/sponza1.obj");
+	trashCan.Load("Data/Models/trash_can.obj");
 
 	Cube cube;
 	cube.Load();
 
-	glm::vec3 lightPos = glm::vec3(0.0f, 1.0f, 0.0f);;
+	glm::vec3 lightPos = glm::vec3(0.0f, 1.0f, 1.0f);
 
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
@@ -81,9 +81,9 @@ int main()
 
 		if (!Input::IsKeyPressed(GLFW_KEY_SPACE))
 		{
-			lightPos.x = glm::sin(window.GetElapsedTime());
-			lightPos.y = 1.0f;
-			lightPos.z = glm::cos(window.GetElapsedTime());
+			//lightPos.x = glm::sin(window.GetElapsedTime());
+			//lightPos.y = 1.0f;
+			//lightPos.z = glm::cos(window.GetElapsedTime());
 		}
 		
 
@@ -97,8 +97,8 @@ int main()
 
 		modelShader.Use();
 		modelShader.SetMat4("projView", camera.GetProjectionMatrix() * camera.GetViewMatrix());
-//		modelShader.SetMat4("modelMatrix", glm::rotate(glm::mat4(1.0f), glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
-		modelShader.SetMat4("modelMatrix", glm::mat4(1.0f));
+		modelShader.SetMat4("modelMatrix", glm::rotate(glm::mat4(1.0f), glm::radians(window.GetElapsedTime()) * 15.0f, glm::vec3(0.0f, 1.0f, 0.0f)));
+		//modelShader.SetMat4("modelMatrix", glm::mat4(1.0f));
 		modelShader.SetVec3("lightPos", lightPos);
 		trashCan.Render();
 

@@ -182,8 +182,10 @@ void Model::LoadMaterialTextures(std::vector<unsigned int> &textures, aiMaterial
 	unsigned int count = mat->GetTextureCount(type);
 
 	if (count == 0)
+	{
+		textures.push_back(0);		// Push back empty texture so we bind them correctly in order. Diffuse, Specular, Normal Map otherwise if we didn't have a specular map the normal would be bound in it's bindind number/slot instead
 		return;
-
+	}
 	// Get the first texture of this type. We don't support more than one texture per type
 	aiString str;
 	mat->GetTexture(type, 0, &str);

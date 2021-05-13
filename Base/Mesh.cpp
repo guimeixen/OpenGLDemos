@@ -27,7 +27,8 @@ void Mesh::Dispose()
 
 	for (size_t i = 0; i < textures.size(); i++)
 	{
-		glDeleteTextures(1, &textures[i]);
+		if (textures[i] != 0)
+			glDeleteTextures(1, &textures[i]);
 	}
 }
 
@@ -35,7 +36,8 @@ void Mesh::Render() const
 {
 	for (size_t i = 0; i < textures.size(); i++)
 	{
-		glBindTextureUnit(i, textures[i]);
+		if (textures[i] != 0)
+			glBindTextureUnit(i, textures[i]);
 	}
 
 	glBindVertexArray(vao);

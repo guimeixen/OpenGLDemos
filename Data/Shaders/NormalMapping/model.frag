@@ -32,6 +32,6 @@ void main()
 	diffuse *= diff;
 
 	color.rgb = pow(diffuse, vec3(0.45));
-	color.rgb = texture(normalMap, uv).rgb;
+	//color.rgb = texture(normalMap, uv).rgb;
 	color.a = 1.0;
 }
